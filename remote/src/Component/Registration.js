@@ -1,10 +1,8 @@
 import React, { useEffect, useReducer } from 'react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import { Link, Redirect, Switch } from 'react-router-dom';
 import { Base64 } from 'js-base64';
+import './style.css';
+import {Button,Form,FormGroup,Label,Input} from 'reactstrap';
 
 const initialstate={
     Email :"",
@@ -68,45 +66,37 @@ const setData=(e)=>{
 })
 }
     return (
-      <form onSubmit={setData}>
-      <MuiThemeProvider>
-            <React.Fragment>
-                <AppBar title="Registration"/>
-            <TextField 
-            hintText="Enter Your Email"
-            floatingLabelText="Email"
-            value={state.Email}
-            onChange={e=>{dispatch({type :"Email", value:e.target.value})}} required
-            /><br/>
-           <TextField 
-            hintText="Enter Your First Name"
-            floatingLabelText="First_Name"
-            value={state.First}
-            onChange={e=>{dispatch({type :"First_name", value:e.target.value})}} required 
-           /><br/>
-            <TextField 
-            hintText="Enter Your Last Name"
-            floatingLabelText="Last_Name"
-            value={state.Last}
-            onChange={e=>{dispatch({type :"Last_name", value:e.target.value})}} required 
-            /><br/>
-            <TextField 
-            hintText="Enter Your Password"
-            floatingLabelText="password"
-            type="password" 
-            value={state.Password}
-            onChange={e=>{dispatch({type :"Password", value:e.target.value})}} required 
-            />
-            <br/>
-            <RaisedButton 
-             label="Click"
-             primary={true}
-             style={styles.button}
-             type="submit"
-            />
-            </React.Fragment>
-        </MuiThemeProvider>
-        </form>
+        <div className="bg">
+<Form className="login-form" onSubmit={setData}>
+        <h1><span className="font-weight-bold">Registration</span></h1>
+        <h2 className="text-center">Welcome</h2>
+        <FormGroup className="right">
+            <Label>Email</Label>
+            <Input type="email" placeholder="Enter Your Email" value={state.Email}
+            onChange={e=>{dispatch({type :"Email", value:e.target.value})}} required />
+        </FormGroup>
+        <FormGroup className="right">
+            <Label>First Name</Label>
+            <Input type="text" placeholder="Enter Your First Name" value={state.First}
+            onChange={e=>{dispatch({type :"First_name", value:e.target.value})}} required />
+        </FormGroup>
+        <FormGroup className="right">
+            <Label>Last Name</Label>
+            <Input type="text" placeholder="Enter Your Last Name" value={state.Last}
+            onChange={e=>{dispatch({type :"Last_name", value:e.target.value})}} required />
+        </FormGroup>
+    
+        <FormGroup className="right">
+            <Label>Password</Label>
+            <Input type="password" placeholder="Password" value={state.Password}
+            onChange={e=>{dispatch({type :"Password", value:e.target.value})}} required />
+        </FormGroup>
+        <Button className="btn-lg btn-dark btn-block">Submit</Button>
+        <div className="text-center">
+        <Link style={{color:"black"}} to="/">Login</Link>
+        </div>
+        </Form>
+    </div>
     )
 }
 

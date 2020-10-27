@@ -1,10 +1,8 @@
 import React,{useReducer,useEffect}from 'react'
 import { useLocation } from 'react-router-dom'
-import queryString from 'query-string';
-import { MuiThemeProvider } from 'material-ui/styles';
-import { AppBar} from 'material-ui';
-import Button from '@material-ui/core/Button'
+import {Button,Form,FormGroup,Label,Input, Navbar} from 'reactstrap';
 import { Redirect } from 'react-router-dom'
+import './style.css';
 const initialstate={
     posts:'',
     comments:[],
@@ -48,19 +46,21 @@ const ViewData=()=>{
         localStorage.removeItem("Email")
         window.location.href='/'
     }
+    const Back=()=>
+    {
+        window.location.href='/posts'
+    }
     if(user==null){
        return(<Redirect to="/" />)
     }else{
     return (
-        <div>
-            <MuiThemeProvider >
-           <React.Fragment>
-               <AppBar title="Comment Section" position="static">
-               <Button color="inherit" style={{color:"white"}} onClick={Logout}>Logout</Button></AppBar>
-               <h1>{state.posts}</h1>
+        <div className="bg">
+             <Navbar bg="primary" variant="dark" >  
+             <Button className="btn-lg btn-dark btn--block back" onClick={Back}>Back</Button>
+             <h2 className="abc">Comment</h2>
+            <Button className="btn-lg btn-dark btn--block position" onClick={Logout}>Logout</Button></Navbar>
+             <h1>{state.posts}</h1>
               {state.comments.length>0 ? <ViewData/>:null}
-           </React.Fragment>
-           </MuiThemeProvider>
         </div>
     )
     }

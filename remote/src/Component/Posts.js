@@ -1,9 +1,8 @@
-import { AppBar } from 'material-ui'
-import { MuiThemeProvider } from 'material-ui/styles'
+
 import React, { useReducer,useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
-import App from '../App'
+import './style.css';
+import {Button,Form,FormGroup,Label,Input, Navbar} from 'reactstrap';
 var commit=""
 const initialstate={
     name:'',
@@ -55,15 +54,10 @@ function Post() {
     }
     else{
     return(
-        <div >
-       <MuiThemeProvider>
-           <React.Fragment>
-               <AppBar title={state.name}>
-               <Button color="inherit"  style={{color:"white"}} onClick={Logout}>Logout</Button>
-               </AppBar>
+        <div className="parallax">
+            <h2 className="abc">{state.name}</h2>
+               <Button className="btn-lg btn-dark btn--block position" onClick={Logout}>Logout</Button>
             {state.posts.length>0  ? <ViewData/>:null}
-           </React.Fragment>
-       </MuiThemeProvider>
         </div>
     )
 }

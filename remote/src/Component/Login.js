@@ -1,10 +1,9 @@
-import React,{useReducer} from 'react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import React,{useEffect, useReducer} from 'react'
+import './style.css';
+
 import { Base64 } from 'js-base64';
 import { Link, Redirect } from 'react-router-dom';
+import {Button,Form,FormGroup,Label,Input} from 'reactstrap';
 const initialstate={
     Email :"",
     Password:"",
@@ -44,42 +43,31 @@ function Login() {
         }
     })
     .catch((error)=>alert(`${error}`))
-
-}
+};
     if(state.loggedin){
         return <Redirect to ="/posts" />
     }
     else{
     return (
-       <div >
-       <form onSubmit={submit}>
-        <MuiThemeProvider>
-            <React.Fragment>
-            <AppBar title="Login"/>
-            <TextField 
-            hintText="Enter Your Email"
-            floatingLabelText="Email"
-            value={state.Email}
-            onChange={e=>{dispatch({type :"Email", value:e.target.value})}} required
-            /><br/>
-            <TextField 
-            hintText="Enter Your Password"
-            floatingLabelText="password"
-            type="password"
-            value={state.Password}
-            onChange={e=>{dispatch({type :"Password", value:e.target.value})}} required
-            />
-            <br/>
-            <RaisedButton 
-             label="Click"
-             primary={true}
-             style={styles.button}
-             type="submit"
-           /><br/>
-           <Link to="/Regisration">Registration</Link>
-            </React.Fragment>
-        </MuiThemeProvider>
-    </form>
+       <div className="bg" >
+       <Form className="login-form" onSubmit={submit}>
+        <h1><span className="font-weight-bold text-center">Login</span></h1>
+        <h2 className="text-center">Welcome</h2>
+        <FormGroup className="right">
+            <Label>Email</Label>
+            <Input type="email" placeholder="Email" value={state.Email}
+            onChange={e=>{dispatch({type :"Email", value:e.target.value})}} required />
+        </FormGroup>
+        <FormGroup className="right">
+            <Label>Password</Label>
+            <Input type="password" placeholder="Password" value={state.Password}
+            onChange={e=>{dispatch({type :"Password", value:e.target.value})}} required />
+        </FormGroup>
+        <Button className="btn-lg btn-dark btn-block">Login</Button>
+        <div className="text-center">
+        <Link to="/Regisration">Registration</Link>
+        </div>
+        </Form>
     </div>
     ) }
 }

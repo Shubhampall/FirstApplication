@@ -10,7 +10,7 @@ import Post from './Component/Posts';
 import Comments from './Component/Comment';
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
     <BrowserRouter>
     <Switch>
           <Route exact path="/" component={Login} />

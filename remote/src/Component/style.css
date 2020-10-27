@@ -1,0 +1,57 @@
+.login-form{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    height: 100%;
+  }
+.right{
+    text-align: left;
+}  
+.bg {
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+}
+.position{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.back{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.cen {
+  text-align: center;
+}
+.abc {
+  width:30%;
+  margin-left: 35%;
+}
+.lg {
+  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+.parallax {
+  /* The image used */
+  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
