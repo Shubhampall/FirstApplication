@@ -57,6 +57,7 @@ const setData=(e)=>{
     return (
         <div className="bg">
         <Button className="btn-lg btn-dark btn--block back" onClick={Back}>Posts</Button>
+        <div className="form-container">
         <Form className="login-form" onSubmit={setData}>
         <h1><span className="font-weight-bold">Post</span></h1>
         <FormGroup className="right">
@@ -73,6 +74,7 @@ const setData=(e)=>{
         <div className="text-center">
         </div>
         </Form>
+        </div>
     </div>
     )
 }

@@ -54,7 +54,7 @@ const ViewData=()=>{
        return(<Redirect to="/" />)
     }else{
     return (
-        <div className="bg">
+        <div className="">
              <Navbar bg="primary" variant="dark" >  
              <Button className="btn-lg btn-dark btn--block back" onClick={Back}>Back</Button>
              <h2 className="abc">Comment</h2>

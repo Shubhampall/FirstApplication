@@ -50,24 +50,27 @@ function Login() {
     else{
     return (
        <div className="bg shadow-box-example z-depth-5" >
-       <Form className="login-form" onSubmit={submit}>
-        <h1><span className="font-weight-bold text-center">Login</span></h1>
-        <h2 className="text-center">Welcome</h2>
-        <FormGroup className="right">
-            <Label>Email</Label>
-            <Input type="email" placeholder="Email" value={state.Email}
-            onChange={e=>{dispatch({type :"Email", value:e.target.value})}} required />
-        </FormGroup>
-        <FormGroup className="right">
-            <Label>Password</Label>
-            <Input type="password" placeholder="Password" value={state.Password}
-            onChange={e=>{dispatch({type :"Password", value:e.target.value})}} required />
-        </FormGroup>
-        <Button className="btn-lg btn-dark btn-block">Login</Button>
-        <div className="text-center">
-        <Link to="/Regisration">Registration</Link>
-        </div>
-        </Form>
+       <div className="form-container">
+        <Form className="login-form" onSubmit={submit}>
+            <h1><span className="font-weight-bold text-center">Login</span></h1>
+            <h2 className="text-center">Welcome</h2>
+            <FormGroup className="right">
+                <Label>Email</Label>
+                <Input type="email" placeholder="Email" value={state.Email}
+                onChange={e=>{dispatch({type :"Email", value:e.target.value})}} required />
+            </FormGroup>
+            <FormGroup className="right">
+                <Label>Password</Label>
+                <Input type="password" placeholder="Password" value={state.Password}
+                onChange={e=>{dispatch({type :"Password", value:e.target.value})}} required />
+            </FormGroup>
+            <Button className="btn-lg btn-dark btn-block">Login</Button>
+            <div className="form-link">
+            <Link style={{color:"darkblue"}} to="/Regisration">Registration</Link>
+            </div>
+            </Form>
+       </div>
+       
     </div>
     ) }
 }

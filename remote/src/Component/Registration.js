@@ -67,6 +67,7 @@ const setData=(e)=>{
 }
     return (
         <div className="bg">
+            <div className="form1-container">
 <Form className="login-form" onSubmit={setData}>
         <h1><span className="font-weight-bold">Registration</span></h1>
         <h2 className="text-center">Welcome</h2>
@@ -92,10 +93,11 @@ const setData=(e)=>{
             onChange={e=>{dispatch({type :"Password", value:e.target.value})}} required />
         </FormGroup>
         <Button className="btn-lg btn-dark btn-block">Submit</Button>
-        <div className="text-center">
-        <Link style={{color:"black"}} to="/">Login</Link>
+        <div className="form-link">
+        <Link style={{color:"darkblue"}} to="/">Login</Link>
         </div>
         </Form>
+        </div>
     </div>
     )
 }

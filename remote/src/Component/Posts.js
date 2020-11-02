@@ -71,7 +71,7 @@ function Post() {
     }
     else{
     return(
-        <div className="parallax">
+        <div className="">
             <h2 className="abc">{state.name}</h2>
             <Button className="btn-lg btn-dark btn--block back" onClick={Posts}>Post</Button>
                <Button className="btn-lg btn-dark btn--block position" onClick={Logout}>Logout</Button>
