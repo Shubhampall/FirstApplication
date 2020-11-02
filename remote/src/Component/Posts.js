@@ -3,11 +3,13 @@ import React, { useReducer,useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import './style.css';
 import {Button,Form,FormGroup,Label,Input, Navbar} from 'reactstrap';
+import * as ReactBootStrap from 'react-bootstrap';
 var commit=""
 const initialstate={
     name:'',
     posts:[],
-    Comment:false 
+    Comment:false,
+    loading:false
 }
 const reducer=(state,action)=>{
     switch(action.type){
@@ -15,6 +17,8 @@ const reducer=(state,action)=>{
             return{...state,name:action.payload}
         case "post":
             return{...state,posts:action.payload}
+        case "loading":
+            return{...state,loading:action.payload}
      }
 }
 function Post() {
@@ -44,10 +48,23 @@ function Post() {
             }
         </React.Fragment>)
     }
+    const Loading=()=>{
+        setTimeout(()=>{dispatch({type:"loading",payload:true})},3000)
+        if(state.loading){
+            return(<div><h1>No Posts Yet</h1></div>)
+        }
+        else{
+            return(<ReactBootStrap.Spinner animation="border" />)
+        }
+    }
     const Logout=()=>
     {
         localStorage.removeItem("Email")
         window.location.href='/'
+    }
+    const Posts=()=>
+    {
+        window.location.href='/post'
     }
     if(user==null){
        return(<Redirect to="/" />)
@@ -56,8 +73,9 @@ function Post() {
     return(
         <div className="parallax">
             <h2 className="abc">{state.name}</h2>
+            <Button className="btn-lg btn-dark btn--block back" onClick={Posts}>Post</Button>
                <Button className="btn-lg btn-dark btn--block position" onClick={Logout}>Logout</Button>
-            {state.posts.length>0  ? <ViewData/>:null}
+            {state.posts.length>0  ? <ViewData/>:<Loading/>}
         </div>
     )
 }

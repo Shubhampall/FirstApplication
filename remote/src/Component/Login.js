@@ -49,7 +49,7 @@ function Login() {
     }
     else{
     return (
-       <div className="bg" >
+       <div className="bg shadow-box-example z-depth-5" >
        <Form className="login-form" onSubmit={submit}>
         <h1><span className="font-weight-bold text-center">Login</span></h1>
         <h2 className="text-center">Welcome</h2>

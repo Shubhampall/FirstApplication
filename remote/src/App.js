@@ -8,6 +8,8 @@ import Starting from './Component/Starting';
 import Demo from './Component/demo'
 import Post from './Component/Posts';
 import Comments from './Component/Comment';
+import Uploadingpost from './Component/uploadingpost'
+import Demo1 from './Component/demo1';
 function App() {
   return (
     <div className="App" >
@@ -17,6 +19,8 @@ function App() {
           <Route path="/Regisration" component={Registration} />
           <Route path="/posts" component={Post} />
           <Route path="/comment" component={Comments} />
+          <Route path="/post" component={Uploadingpost} />
+          <Route path="/demo" component={Demo1} />
         </Switch>
     </BrowserRouter>
     </div>
