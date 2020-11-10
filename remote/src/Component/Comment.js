@@ -1,9 +1,8 @@
 import React,{useReducer,useEffect}from 'react'
-import { useLocation } from 'react-router-dom'
-import {Button,Form,FormGroup,Label,Input, Navbar} from 'reactstrap';
-import { Redirect } from 'react-router-dom'
+import { useLocation,Redirect } from 'react-router-dom'
+import {Button, Navbar} from 'reactstrap';
 import './style.css';
-const initialstate={
+const State={
     posts:'',
     comments:[],
 }
@@ -17,16 +16,16 @@ const reducer=(state,action)=>{
 }
 
 function Comments() {
-    const [state,dispatch]=useReducer(reducer,initialstate)
+    const [state,dispatch]=useReducer(reducer,State)
     const user=localStorage.getItem("Email");
     const location=useLocation()
-    let postid=(location.pathname.match(/(\d+)/)[0]).toString()
+    let PostId=(location.pathname.match(/(\d+)/)[0]).toString()
 useEffect(()=>{
-    fetch(`http://localhost:3333/posts/${postid}`)
+    fetch(`http://localhost:3333/posts/${PostId}`)
     .then((response) => response.json())
     .then((json)=>dispatch({type:"post",payload:json.title}))
     .catch((error)=>alert(`${error}`))
-    fetch(`http://localhost:3333/comments?postId=${postid}`)
+    fetch(`http://localhost:3333/comments?postId=${PostId}`)
     .then((response) => response.json())
     .then((json)=>dispatch({type:"comment",payload:json}))
     .catch((error)=>alert(`${error}`))
@@ -54,7 +53,7 @@ const ViewData=()=>{
        return(<Redirect to="/" />)
     }else{
     return (
-        <div className="">
+        <div>
              <Navbar bg="primary" variant="dark" >  
              <Button className="btn-lg btn-dark btn--block back" onClick={Back}>Back</Button>
              <h2 className="abc">Comment</h2>

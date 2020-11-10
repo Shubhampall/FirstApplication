@@ -1,13 +1,12 @@
-import React,{useEffect, useReducer} from 'react'
+import React,{useReducer} from 'react'
 import './style.css';
-
 import { Base64 } from 'js-base64';
 import { Link, Redirect } from 'react-router-dom';
 import {Button,Form,FormGroup,Label,Input} from 'reactstrap';
-const initialstate={
+const State={
     Email :"",
     Password:"",
-    loggedin:false,
+    IsLogged:false,
 }
 const reducer=(state,action)=>{
     switch(action.type){
@@ -16,16 +15,11 @@ const reducer=(state,action)=>{
         case "Password":
             return{...state,Password:action.value}
         case "Login":
-            return{...state,loggedin:action.payload}
+            return{...state,IsLogged:action.payload}
             }
    }
-
 function Login() {
-    const [state,dispatch]=useReducer(reducer,initialstate)
-    const styles={
-        button :{
-            margin :15
-        }}
+    const [state,dispatch]=useReducer(reducer,State)
     const submit=(e)=>{
         e.preventDefault();
        const a= Base64.encode(state.Password)
@@ -38,18 +32,18 @@ function Login() {
         else{
              localStorage.setItem("Email",json[0].id)
              dispatch({
-                 type:"Login",payload:!state.loggedin
+                 type:"Login",payload:!state.IsLogged
              })
         }
     })
     .catch((error)=>alert(`${error}`))
 };
-    if(state.loggedin){
+    if(state.IsLogged){
         return <Redirect to ="/posts" />
     }
     else{
-    return (
-       <div className="bg shadow-box-example z-depth-5" >
+        return (
+       <div className="bg shadow-box-example z-depth-5" >       
        <div className="form-container">
         <Form className="login-form" onSubmit={submit}>
             <h1><span className="font-weight-bold text-center">Login</span></h1>
@@ -66,11 +60,10 @@ function Login() {
             </FormGroup>
             <Button className="btn-lg btn-dark btn-block">Login</Button>
             <div className="form-link">
-            <Link style={{color:"darkblue"}} to="/Regisration">Registration</Link>
+            <Link style={{color:"darkblue"}} to="/Registration">Registration</Link>
             </div>
             </Form>
        </div>
-       
     </div>
     ) }
 }

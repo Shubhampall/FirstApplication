@@ -1,11 +1,10 @@
-
 import React, { useReducer,useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import './style.css';
-import {Button,Form,FormGroup,Label,Input, Navbar} from 'reactstrap';
+import {Button} from 'reactstrap';
 import * as ReactBootStrap from 'react-bootstrap';
 var commit=""
-const initialstate={
+const State={
     name:'',
     posts:[],
     Comment:false,
@@ -22,11 +21,9 @@ const reducer=(state,action)=>{
      }
 }
 function Post() {
-    const [state,dispatch]=useReducer(reducer,initialstate)
+    const [state,dispatch]=useReducer(reducer,State)
     const user=localStorage.getItem("Email");
-    console.log(user)
     useEffect(()=>{
-        console.log(user)
         fetch(`http://localhost:3333/users/${user}`)
         .then((response) => response.json())
         .then((json)=>dispatch({type:"name",payload:json.first_name+ " " +json.last_name}))
@@ -71,7 +68,7 @@ function Post() {
     }
     else{
     return(
-        <div className="">
+        <div>
             <h2 className="abc">{state.name}</h2>
             <Button className="btn-lg btn-dark btn--block back" onClick={Posts}>Post</Button>
                <Button className="btn-lg btn-dark btn--block position" onClick={Logout}>Logout</Button>

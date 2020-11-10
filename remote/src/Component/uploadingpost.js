@@ -1,9 +1,8 @@
-import React, { useEffect, useReducer } from 'react'
-import { Link, Redirect, Switch } from 'react-router-dom';
+import React, { useReducer } from 'react'
 import './style.css';
 import {Button,Form,FormGroup,Label,Input} from 'reactstrap';
 
-const initialstate={
+const State={
     Title :"",
     Body:"",
 }
@@ -16,13 +15,9 @@ const initialstate={
            return{...state,Body:action.value}   
         }
   }
-function Uploadingpost() { 
-    const [state,dispatch]=useReducer(reducer,initialstate)
+function Upload() { 
+    const [state,dispatch]=useReducer(reducer,State)
     const user=localStorage.getItem("Email");
-    const styles={
-button :{
-    margin :15
-}}
 const setData=(e)=>{
     e.preventDefault();
     fetch('http://localhost:3333/posts', {
@@ -79,4 +74,4 @@ const setData=(e)=>{
     )
 }
 
-export default Uploadingpost
+export default Upload

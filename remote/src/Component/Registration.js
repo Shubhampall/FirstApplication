@@ -1,17 +1,15 @@
-import React, { useEffect, useReducer } from 'react'
-import { Link, Redirect, Switch } from 'react-router-dom';
+import React, { useReducer } from 'react'
+import { Link } from 'react-router-dom';
 import { Base64 } from 'js-base64';
 import './style.css';
 import {Button,Form,FormGroup,Label,Input} from 'reactstrap';
-
-const initialstate={
+const State={
     Email :"",
     First:"",
     Last :"",
     Password:"",
 }
-  
-  const reducer=(state,action)=>{
+const reducer=(state,action)=>{
    switch(action.type){
         case "Email":
            return{...state,Email:action.value}
@@ -24,11 +22,7 @@ const initialstate={
         }
   }
 function Registration() { 
-    const [state,dispatch]=useReducer(reducer,initialstate)
-  const styles={
-button :{
-    margin :15
-}}
+    const [state,dispatch]=useReducer(reducer,State)
 const setData=(e)=>{
     e.preventDefault();
     const a= Base64.encode(state.Password)
