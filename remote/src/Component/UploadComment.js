@@ -16,16 +16,19 @@ const reducer = (state, action) => {
 		default:
 	}
 };
-function Upload() {
+
+function UploadComment() {
 	const [state, dispatch] = useReducer(reducer, State);
-	const user = localStorage.getItem('Email');
+	const id = localStorage.getItem('userId');
+	const userEmail = localStorage.getItem('UserEmail');
 	const setData = (e) => {
 		e.preventDefault();
-		fetch('http://localhost:3333/posts', {
+		fetch('http://localhost:3333/comments', {
 			method: 'POST',
 			body: JSON.stringify({
-				userId: user,
-				title: state.Title,
+				postId: id,
+				name: state.Title,
+				email: userEmail,
 				body: state.Body,
 			}),
 			headers: {
@@ -43,7 +46,7 @@ function Upload() {
 				alert(error);
 			});
 		alert('Sucessfully Post');
-		window.location.href = '/post';
+		window.location.href = '/comments';
 	};
 	const Back = () => {
 		window.location.href = '/posts';
@@ -56,13 +59,13 @@ function Upload() {
 			<div className="form-container">
 				<Form className="login-form" onSubmit={setData}>
 					<h1>
-						<span className="font-weight-bold">Post</span>
+						<span className="font-weight-bold">Comments</span>
 					</h1>
 					<FormGroup className="right">
 						<Label>Title</Label>
 						<Input
 							type="text"
-							placeholder="Enter Title"
+							placeholder="Enter Name"
 							value={state.Email}
 							onChange={(e) => {
 								dispatch({ type: 'title', value: e.target.value });
@@ -74,7 +77,7 @@ function Upload() {
 						<Label>First Name</Label>
 						<Input
 							type="textarea"
-							placeholder="Enter Your body"
+							placeholder="Enter Your Comments"
 							value={state.First}
 							onChange={(e) => {
 								dispatch({ type: 'body', value: e.target.value });
@@ -90,4 +93,4 @@ function Upload() {
 	);
 }
 
-export default Upload;
+export default UploadComment;
