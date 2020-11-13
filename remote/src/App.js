@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Registration from './Component/Registration';
 import Login from './Component/Login';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Post from './Component/Posts';
 import Comments from './Component/Comment';
 import Upload from './Component/uploadingpost';
